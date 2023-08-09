@@ -1,3 +1,7 @@
 {
-	"role_name": "new_role"
+	"role_name": "new_role",
+	"author": "new_author",
+	"description": "Description of the role",
+	"default_tag": "{{ cookiecutter.role_name }}",
+	"license": "MIT"
 }

@@ -1,2 +1,24 @@
 ---
-# tasks file for rolename
+# tasks file for {{ cookiecutter.role_name }}
+{% raw -%}
+- name: Gather os specific variables
+  ansible.builtin.include_vars: "{{ item }}"
+  with_first_found:
+    - files:
+        - "{{ ansible_os_family }}.yaml"
+        - "{{ ansible_os_family }}-{{ ansible_distribution_major_version }}\
+           .yaml"
+      paths:
+        - "{{ role_path }}/vars"
+  tags:
+{% endraw %}
+    {{ cookiecutter.default_tag }}
+{% raw -%}
+- name: Install required packages
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+{% endraw %}
+  loop: "{%raw%}{{{%endraw%}{{ cookiecutter.role_name }}_required_packages{% raw %}}}{%endraw%}"
+  tags:
+    {{ cookiecutter.default_tag }}

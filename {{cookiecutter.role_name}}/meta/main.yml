@@ -1,0 +1,15 @@
+galaxy_info:
+  author: {{ cookiecutter.author }}
+  description: {{ cookiecutter.description }}
+  company: Data in Science Technologies
+  role_name: {{ cookiecutter.role_name }}
+  namespace: dstdev
+
+  license: MIT
+
+  min_ansible_version: 2.1
+
+
+  galaxy_tags: []
+
+dependencies: []
